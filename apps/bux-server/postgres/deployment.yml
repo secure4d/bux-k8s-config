@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: postgres
+  labels:
+    app: bux
+    instance: postgres
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: bux
+      instance: postgres
+  template:
+    metadata:
+      labels:
+        app: bux
+        instance: postgres
+    spec:
+      containers:
+        - name: postgres
+          image: postgres:15.2-alpine
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 5432
+              name: pgdb
+          envFrom:
+            - configMapRef:
+                name: postgres-configuration
+          volumeMounts:
+            - name: pv
+              mountPath: /var/lib/postgresql/data
+      volumes:
+        - name: pv
+          persistentVolumeClaim:
+            claimName: postgres-pvc

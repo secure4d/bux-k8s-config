@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: redis
+  labels:
+    app: bux
+    instance: redis
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: bux
+      instance: redis
+  template:
+    metadata:
+      labels:
+        app: bux
+        instance: redis
+    spec:
+      containers:
+        - name: redis
+          image: redis:7.2-rc-alpine
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 6379
+              name: redis
+          volumeMounts:
+            - name: pv
+              mountPath: /data/redis
+      volumes:
+        - name: pv
+          persistentVolumeClaim:
+            claimName: redis-pvc

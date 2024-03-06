@@ -1,0 +1,26 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: bux-console-ingress
+  labels:
+    app: bux-console
+  annotations:
+    cert-manager.io/cluster-issuer: lets-encrypt
+    traefik.ingress.kubernetes.io/router.entrypoints: websecure
+spec:
+  ingressClassName: traefik
+  tls:
+    - hosts:
+        - bux-console.buxbit.net
+      secretName: bux-console-tls
+  rules:
+    - host: bux-console.buxbit.net
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: bux-console
+                port:
+                  name: web

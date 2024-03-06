@@ -1,0 +1,26 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: pulse-ingress
+  labels:
+    app: pulse
+  annotations:
+    cert-manager.io/cluster-issuer: lets-encrypt
+    traefik.ingress.kubernetes.io/router.entrypoints: websecure
+spec:
+  ingressClassName: traefik
+  tls:
+    - hosts:
+        - pulse.buxbit.net
+      secretName: pulse-tls
+  rules:
+    - host: pulse.buxbit.net
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: pulse
+                port:
+                  name: web

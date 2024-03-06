@@ -1,0 +1,22 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: bux-wallet-frontend-demo
+  annotations:
+    cert-manager.io/cluster-issuer: lets-encrypt
+spec:
+  tls:
+    - hosts:
+        - bux-wallet.buxbit.net
+      secretName: bux-wallet-tls
+  rules:
+    - host: bux-wallet.buxbit.net
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: bux-wallet-frontend-demo
+                port:
+                  name: web

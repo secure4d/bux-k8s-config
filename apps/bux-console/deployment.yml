@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app.kubernetes.io/name: bux-console
+  name: bux-console
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: bux-console
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: bux-console
+        app.kubernetes.io/name: bux-console
+    spec:
+      containers:
+        - name: bux-console
+          image: buxorg/bux-console:latest
+          imagePullPolicy: Always
+          volumeMounts:
+            - name: env-config
+              mountPath: /usr/share/nginx/html/env-config.json
+              subPath: env-config.json
+              readOnly: true
+          ports:
+            - containerPort: 3000
+              name: web
+              protocol: TCP
+      volumes:
+        - name: env-config
+          configMap:
+            name: bux-console-env
