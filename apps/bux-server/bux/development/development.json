@@ -60,12 +60,12 @@
   },
   "paymail": {
     "enabled": true,
-    "default_from_paymail": "bux@buxbit.net",
+    "default_from_paymail": "bux@DOMAIN_NAME_TLD",
     "default_note": "bux Address Resolution",
     "domain_validation_enabled": false,
     "domains": [
       "localhost",
-      "buxbit.net"
+      "DOMAIN_NAME_TLD"
     ],
     "sender_validation_enabled": false
   },

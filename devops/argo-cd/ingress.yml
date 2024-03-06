@@ -11,10 +11,10 @@ metadata:
 spec:
   tls:
     - hosts:
-        - cd.buxbit.net
+        - cd.DOMAIN_NAME_TLD
       secretName: argocd-secret
   rules:
-    - host: cd.buxbit.net
+    - host: cd.DOMAIN_NAME_TLD
       http:
         paths:
           - path: /

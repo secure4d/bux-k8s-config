@@ -11,10 +11,10 @@ metadata:
 spec:
   tls:
     - hosts:
-        - bux.buxbit.net
+        - bux.DOMAIN_NAME_TLD
       secretName: bux-server-tls
   rules:
-    - host: bux.buxbit.net
+    - host: bux.DOMAIN_NAME_TLD
       http:
         paths:
           - path: /

@@ -7,10 +7,10 @@ metadata:
 spec:
   tls:
     - hosts:
-        - bux-wallet.buxbit.net
+        - bux-wallet.DOMAIN_NAME_TLD
       secretName: bux-wallet-tls
   rules:
-    - host: bux-wallet.buxbit.net
+    - host: bux-wallet.DOMAIN_NAME_TLD
       http:
         paths:
           - path: /
