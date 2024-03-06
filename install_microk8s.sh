@@ -15,4 +15,4 @@ sudo microk8s enable helm3
 sudo microk8s enable argocd:v2.3.15
 sudo microk8s enable cert-manager
 sudo microk8s enable openebs
-sudo microk8s enable metallb 172.233.79.213/32
+sudo microk8s enable metallb BUX_HOST_IP/32
