@@ -5,12 +5,12 @@
   "environment": "development",
   "gdpr_compliance": false,
   "request_logging": true,
-  "import_block_headers": "",
+  "import_block_headers": "https://viljive.nl/bux/blocks_bux.tsv.zip",
   "authentication": {
     "admin_key": "xpub661MyMwAqRbcFgfmdkPgE2m5UjHXu9dj124DbaGLSjaqVESTWfCD4VuNmEbVPkbYLCkykwVZvmA8Pbf8884TQr1FgdG2nPoHR8aB36YdDQh",
-    "require_signing": true,
+    "require_signing": false,
     "scheme": "xpub",
-    "signing_disabled": false
+    "signing_disabled": true
   },
   "cache": {
     "engine": "redis"

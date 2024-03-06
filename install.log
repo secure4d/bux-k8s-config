@@ -1,1 +1,0 @@
-replace_domain.sh: replace all occurences of DOMAIN_NAME_TLD with DOMAIN_NAME_TLD, except file: replace_domain.sh
